@@ -47,10 +47,11 @@ p {
 
 .words-container h1 {
   width: 70%;
+  font-size: 3rem;
 }
 
 .form-container > div:nth-of-type(1) {
-  background-color: var(--blue);
+  background-color: var(--blue);     
   color: var(--white);
   font-weight: 700;
 
