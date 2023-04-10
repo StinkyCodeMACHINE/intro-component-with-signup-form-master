@@ -28,15 +28,26 @@
       <div>Try it free 7 days <span>then $20/mo. thereafter</span></div>
       
       <form action="#">
-        <input type="text" placeholder="First Name">
-        <input type="text" placeholder="Last Name">
-        <input type="email" placeholder="Email Address">
-        <input type="password" placeholder="Password">
+        <div class="form-field">
+          <input type="text" placeholder="First Name" required>
+          <div class="error-message">First Name requiered</div>
+        </div>
+        <div class="form-field">
+          <input type="text" placeholder="Last Name" required>
+          <div class="error-message">Last Name cannot be empty</div>
+        </div>
+        <div class="form-field">
+          <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email Address" required>
+          <div class="error-message">Looks like this is not an email</div>
+        </div>
+        <div class="form-field">
+          <input type="password" placeholder="Password" required>
+          <div class="error-message">Password cannot be empty</div>
+        </div>
 
-        <input id="submit" type="submit">
-        <label for="submit">Claim your free trial</label>
+        <input id="submit" type="submit" value="Claim your free trial">
          
-        <div>By clicking the button, you are agreeing to our <span>Terms and Services</span></div>
+        <div class="condition">By clicking the button, you are agreeing to our <span>Terms and Services</span></div>
         
       </form>
       
@@ -45,6 +56,37 @@
   </main>
 
   
+  <script>
+    const fName = document.querySelectorAll('input[type="text"]')[0];
+    const lName = document.querySelectorAll('input[type="text"]')[1];
+    const email = document.querySelector('input[type="email"]');
+    const password = document.querySelector('input[type="password"]');
+    const errors = document.querySelectorAll(".error-message");
 
+    fName.addEventListener("invalid", e => {
+      e.preventDefault();
+      fName.classList.add("invalid");
+      fName.nextElementSibling.classList.add("shown");
+    });
+
+    lName.addEventListener("invalid", e => {
+      e.preventDefault();
+      lName.classList.add("invalid");
+      lName.nextElementSibling.classList.add("shown");
+    });
+
+    email.addEventListener("invalid", e => {
+      e.preventDefault();
+      email.classList.add("invalid");
+      email.nextElementSibling.classList.add("shown");
+    });
+
+    password.addEventListener("invalid", e => {
+      e.preventDefault();
+      password.classList.add("invalid");
+      password.nextElementSibling.classList.add("shown");
+    });
+
+  </script>
 </body>
 </html>
